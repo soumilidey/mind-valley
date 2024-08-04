@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindValley VR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #121212;
+            color: #0f0;
+            overflow-x: hidden;
+            font-size: 1em;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a1a;
+            padding: 10px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #0f0;
+            text-decoration: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold; 
+            font-size: 1em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+        }
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #0f0;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+        .nav-menu.active {
+            display: flex;
+        }
+        .hero, .section-background {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero::before, .section-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+        .hero-content, .section-content {
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .hero h1 {
+            font-size: 4.9em;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero p, .section-content p {
+            font-size: 1.2em;
+        }
+        .curved-line {
+            width: 50%;
+            height: 10px;
+            background: #0f0;
+            margin: 30px auto;
+            animation: expandWidth 2s;
+        }
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 50%; }
+        }
+        .footer {
+            background-color: #1a1a1a;
+            color: #0f0;
+            text-align: center;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0c0;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        h2 {
+            font-size: 2.6em; 
+            font-family: 'Montserrat', sans-serif;
+            animation: fadeInUp 2s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-content {
+            max-width: 800px;
+            margin: auto;
+        }
+        .subscription {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: popUp 2s;
+        }
+        .subscription ul {
+            list-style: none;
+            padding: 0;
+        }
+        .subscription li {
+            font-size: 1.25em;
+        }
+        @keyframes popUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .subscription .section-content {
+            background: none; 
+        }
+
+        @media (max-width: 768px) {
+            .burger {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-container">
+        <img src="logo.jpeg" alt="Logo">
+        <div class="logo">Mind Valley</div>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="resources.html">Resources</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+    <div class="burger" id="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="nav-menu" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="resources.html">Resources</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+</nav>
+
+
+<div id="projects" class="section-background" style="background-image: url('ai_therapy.jpg.jpeg');">
+    <div class="section-content">
+        <h2>Art Hub</h2>
+        <p>Art Therapy Corner is an innovative project that combines creativity with mental health support. This platform invites users to explore their emotions and enhance their well-being through artistic expression. Each month, we provide new art prompts, video tutorials, and digital tools for activities like drawing, painting, and sculpture. Users can share their artwork in a safe online gallery, participate in virtual art therapy sessions, and receive feedback from professional art therapists. This project aims to leverage the therapeutic power of art to help individuals express themselves, manage stress, and build self-awareness. Whether you’re an artist or a beginner, Art Therapy Corner offers a unique way to nurture your mental health through creativity.</p>
+    </div>
+</div>
+
+<div class="curved-line"></div>
+
+<div id="projects" class="section-background" style="background-image: url('vr1.jpeg');">
+    <div class="section-content">
+        <h2>Resource Libraries</h2>
+        <p>A comprehensive resource library can provide valuable information and support for individuals seeking help with mental health issues. Offering articles, guides, videos, and downloadable materials on various topics can empower users with knowledge and tools to manage their mental health. Regularly updating this library with new content can ensure it remains relevant and useful, making our website a go-to resource for mental health information.</p></div>
+    </div>
+
+
+<div class="footer">
+    <p>Contact us at info@mindvalley.com</p>
+</div>
+
+<script>
+    const burger = document.getElementById('burger');
+    const navMenu = document.getElementById('nav-menu');
+
+    burger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

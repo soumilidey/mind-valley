@@ -1,0 +1,295 @@
+/* Add this to your existing style.css */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #121212;
+    color: #0f0;
+    overflow-x: hidden;
+    font-size: 1em;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+nav a {
+    color: #0f0;
+    text-decoration: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold; 
+    font-size: 1em;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px;
+}
+
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .nav-active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 50px;
+        left: 0;
+    }
+
+    .nav-active a {
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 20px;
+}
+
+.box {
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.box h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.box p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.box-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 20px;
+}
+.footer {
+    background-color: #1a1a1a;
+    color: #0f0;
+    text-align: center;
+    padding: 10px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #0c0;
+}
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    background: rgba(255, 255, 255, 0.7);
+}
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+.hero, .section-background {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+.hero::before, .section-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+.hero-content, .section-content {
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.hero h1 {
+    font-size: 4.9em;
+    font-family: 'Montserrat', sans-serif;
+}
+.hero p, .section-content p {
+    font-size: 1.2em;
+}
+.curved-line {
+    width: 50%;
+    height: 10px;
+    background: #0f0;
+    margin: 30px auto;
+    animation: expandWidth 2s;
+}
+@keyframes expandWidth {
+    from { width: 0; }
+    to { width: 50%; }
+}
+
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+form {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+/* Add this to your existing style.css */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    font-weight: bold; /* Make text bolder */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s;
+    font-weight: bold; /*text is bolder */
+}
+
+.hero h3 {
+    font-size: 2em;
+    font-weight: bold; /*heading is bolder */
+}
+
+.hero p {
+    font-size: 1.2em;
+    font-weight: bold; /*paragraph text bolder */
+    line-height: 1.5;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(5px); /* Blur the background image */
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+}
+
